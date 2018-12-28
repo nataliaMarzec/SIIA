@@ -88,7 +88,7 @@
 		<dependency>
 			<groupId>org.eclipse.jetty</groupId>
 			<artifactId>jetty-server</artifactId>
-			<version>${jetty9.version}</version>
+			<version>[9.4.11.v20180605,)</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
