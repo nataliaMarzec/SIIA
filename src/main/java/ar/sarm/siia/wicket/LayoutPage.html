@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sistema Informático Integral Administrativo</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+  </head>
+  <body>
+	<nav class="navbar navbar-default navbar-static-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#barra-navegacion-principal" aria-expanded="false">
+					<span class="sr-only">Ver menú</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a wicket:id="homePage" class="navbar-brand">SIIA</a>
+			</div>
+			<div class="collapse navbar-collapse" id="barra-navegacion-principal">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a>Denuncias</a></li>
+					<li><a wicket:id="informacionPage">Información</a></li>
+				</ul>
+			</div>							
+		</div>			
+	</nav>
+	<div class="container-fluid">
+		<wicket:child />
+	</div>
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>

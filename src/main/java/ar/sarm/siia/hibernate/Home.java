@@ -1,0 +1,61 @@
+package ar.sarm.siia.hibernate;
+
+import java.util.List;
+
+import org.hibernate.LockMode;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.GenericTypeResolver;
+import org.springframework.stereotype.Repository;
+
+import ar.sarm.siia.modelo.Persistible;
+
+@Repository
+public abstract class Home<T extends Persistible> {
+
+
+	@Autowired
+	private SessionFactory sessionFactory;
+
+	private Class<T> clazz;
+
+	public Home() {
+		this.clazz = getEntityClass();
+	}
+
+	public Session getSession() {
+		return sessionFactory.getCurrentSession();
+	}
+
+	public T findByName(String name) {
+		return (T) this.getSession().createQuery("FROM " + clazz.getSimpleName() + " WHERE nombre = :name", clazz)
+				.setParameter("name", name).getSingleResult();
+	}
+
+	public T find(Integer id) {
+		return getSession().get(getEntityClass(), id);
+	}
+
+	public List<T> all() {
+		return this.getSession().createQuery("FROM " + clazz.getSimpleName(), clazz).getResultList();
+	}
+
+	public void saveOrUpdate(T object) {
+		this.getSession().saveOrUpdate(object);
+	}
+
+	public void delete(T object) {
+		this.getSession().delete(object);
+	}
+
+	public void attach(T result) {
+		this.getSession().lock(result, LockMode.NONE);
+	}
+
+	@SuppressWarnings("unchecked")
+	private Class<T> getEntityClass() {
+		return (Class<T>) GenericTypeResolver.resolveTypeArgument(getClass(), Home.class);
+	}
+
+}
