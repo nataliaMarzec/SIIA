@@ -1,0 +1,25 @@
+body {
+	background-color: #f5f0f4;
+}
+
+.navbar-default {
+    background-color: #2d2727;
+    border-color: #E7E7E7;
+    margin-bottom: 0px;
+}
+
+.banner {
+	opacity: 0.4;
+}
+
+.navbar-default .navbar-brand {
+    color: #f3f3f3;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #f3f3f3;
+}
+
+.titulo {
+	text-align: center;
+}
